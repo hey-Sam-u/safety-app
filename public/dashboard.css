@@ -1,0 +1,93 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Body */
+  body {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Container */
+  .container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+  }
+  
+  /* Heading */
+  .container h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  
+  /* Buttons */
+  button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 12px 0;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+  }
+  
+  /* Button Styles */
+  #panicBtn {
+    background: #ff4d4d;
+    color: white;
+  }
+  
+  #panicBtn:hover {
+    background: #e60000;
+    transform: scale(1.05);
+  }
+  
+  #safeBtn {
+    background: #4caf50;
+    color: white;
+  }
+  
+  #safeBtn:hover {
+    background: #2e7d32;
+    transform: scale(1.05);
+  }
+  
+  #contactsBtn {
+    background: #2196f3;
+    color: white;
+  }
+  
+  #contactsBtn:hover {
+    background: #1565c0;
+    transform: scale(1.05);
+  }
+  
+  /* Logout button */
+  form button {
+    background: #f0f0f0;
+    color: #333;
+  }
+  
+  form button:hover {
+    background: #ddd;
+    transform: scale(1.05);
+  }
+  

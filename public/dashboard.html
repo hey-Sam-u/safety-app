@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome to Safety App</h2>
+    <p>You are logged in successfully.</p>
+  
+    <!-- Panic button -->
+    <button id="panicBtn">🚨 Panic</button>
+  
+    <!-- Safe button -->
+    <button id="safeBtn">✅ Safe</button>
+  
+    <!-- Manage Contacts -->
+    <button id="contactsBtn">Manage Contacts</button>
+  
+    <!-- Logout -->
+    <form action="/logout" method="POST" style="margin-top:20px;">
+      <button type="submit">Logout</button>
+    </form>
+  </div>
+
+  <script>
+    // PANIC button with real GPS
+    document.getElementById("panicBtn").addEventListener("click", () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+          const latitude = pos.coords.latitude;
+          const longitude = pos.coords.longitude;
+
+          fetch("/panic", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ latitude, longitude })
+          })
+          .then(res => res.text())
+          .then(msg => alert(msg))
+          .catch(err => console.error(err));
+        }, err => {
+          alert("❌ Location access denied or unavailable.");
+        });
+      } else {
+        alert("Geolocation not supported!");
+      }
+    });
+
+    // SAFE button with real GPS
+    document.getElementById("safeBtn").addEventListener("click", () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+          const latitude = pos.coords.latitude;
+          const longitude = pos.coords.longitude;
+
+          fetch("/safe", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ latitude, longitude })
+          })
+          .then(res => res.text())
+          .then(msg => alert(msg))
+          .catch(err => console.error(err));
+        }, err => {
+          alert("❌ Location access denied or unavailable.");
+        });
+      } else {
+        alert("Geolocation not supported!");
+      }
+    });
+
+    // Manage Contacts button
+    document.getElementById("contactsBtn").addEventListener("click", () => {
+      window.location.href = "/contacts";
+    });
+  </script>
+</body>
+</html>
